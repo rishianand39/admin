@@ -10,7 +10,7 @@ import {
   Area,
 } from "recharts";
 
-const Chart = () => {
+const Chart = ({aspect,title}) => {
   const data = [
     { name: "January", Total: 1200 },
     { name: "February", Total: 2100 },
@@ -21,8 +21,8 @@ const Chart = () => {
   ];
   return (
     <div className="chart">
-      <div className="title">Last 6 months Revenue</div>
-      <ResponsiveContainer width="100%" height="100%">
+      <div className="title">{title}</div>
+      <ResponsiveContainer width="100%"  aspect={aspect} >
         <AreaChart
           width={730}
           height={250}
@@ -35,9 +35,9 @@ const Chart = () => {
               <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" stroke="gray" />
+          <YAxis width={50}/>
+          <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
           <Tooltip />
           <Area
             type="monotone"
